@@ -6,7 +6,7 @@ import Header from "../components/Header/Header";
 function Layout(props) {
   return (
     
-    <div className="container">
+    <div className="w-full">
     <Header/>
       <main>
         <Outlet />

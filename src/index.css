@@ -1,7 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body{
-    overflow-x: hidden;
+@font-face {
+    font-family: 'nautigal';
+    src: url('../src/fonts/nautigal/TheNautigal-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+    /* font-display: swap; */
 }
+html {
+    scroll-behavior: smooth;
+  }
+
+  /* .open{
+    transform: translateX(0px)!important;
+    opacity: 1!important;
+  } */

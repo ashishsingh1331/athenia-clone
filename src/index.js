@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './pages/Layout';
 import Home from './components/Home/Home';
+import Services from './pages/Services';
 
 
 ReactDOM.render(
@@ -13,6 +14,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="service/:servicename" element={<Services/>} />
       </Route>
     </Routes>
   </BrowserRouter>,
