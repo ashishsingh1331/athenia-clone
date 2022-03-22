@@ -12,7 +12,16 @@ html {
     scroll-behavior: smooth;
   }
 
-  /* .open{
-    transform: translateX(0px)!important;
-    opacity: 1!important;
-  } */
+  .bg-75{
+    background-position: 75%;
+  }
+  .bg-72{
+    background-position: 72%;
+  }
+
+  @layer components {
+    .menu-link {
+      @apply  uppercase text-lg md:text-xl lg:text-3xl  text-dark-gray tracking-widest hover:underline ;
+    }
+  }
+

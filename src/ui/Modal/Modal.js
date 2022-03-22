@@ -1,6 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { uiSliceActions } from "../../store/ui-slice";
+import {useCallback,useState,useEffect} from 'react';
 
 function Modal(props) {
+    const dispatch = useDispatch();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const escFunction = useCallback((event) => {
+      if (event.key === "Escape") {
+        dispatch(uiSliceActions.toggleModal());
+      }
+    }, []);
+  
+    useEffect(() => {
+      document.addEventListener("keydown", escFunction, false);
+  
+      return () => {
+        document.removeEventListener("keydown", escFunction, false);
+      };
+    }, []);
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -9,25 +28,19 @@ function Modal(props) {
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
             <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-              <h3 className="text-3xl font-semibold">Modal Title</h3>
-              {/* <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
+              <h3 className="text-3xl font-semibold">{props.title}</h3>
+              <button
+                    className="p-1 ml-auto bg-transparent border-0 text-black  float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onClick={() => dispatch(uiSliceActions.toggleModal())}
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="bg-transparent text-black  h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
-                  </button> */}
+                  </button>
             </div>
             {/*body*/}
             <div className="relative p-6 flex-auto">
-              <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                I always felt like I could do anything. That’s the main thing
-                people are controlled by! Thoughts- their perception of
-                themselves! They're slowed down by their perception of
-                themselves. If you're taught you can’t do anything, you won’t do
-                anything. I was taught I could do everything.
-              </p>
+                  {props.children}
             </div>
           </div>
         </div>

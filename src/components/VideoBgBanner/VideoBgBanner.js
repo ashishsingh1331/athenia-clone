@@ -1,8 +1,18 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiSliceActions } from '../../store/ui-slice';
 import Button from '../../ui/Button/Button';
 
+
 function VideoBgBanner(props) {
+    const {isOpen:isModalOpen} = useSelector(state => state.ui.modal);
+    const dispatch = useDispatch();
     
+
+    const bookAppointmentClickHandler = (e) => {
+        e.preventDefault();
+        dispatch(uiSliceActions.toggleModal());
+    }
     return (
         <div style={{
             backgroundImage: `url(${props.bgimage})`,
@@ -18,7 +28,7 @@ function VideoBgBanner(props) {
                     <Button classes={['mr-2','mb-2','sm:mb-0']} to="/service/skinservices" text='Skin Services' />
                 </div>
                 <div className='flex mt-3 md:mt-10 lg:mt-6'>
-                    <Button variant="secondary" text='Book Appointment' />
+                    <Button norouter={true} onClick={bookAppointmentClickHandler} variant="secondary" text='Book Appointment' />
                 </div>
 
             </div>

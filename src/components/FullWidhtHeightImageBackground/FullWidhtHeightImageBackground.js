@@ -1,6 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { uiSliceActions } from "../../store/ui-slice";
 import Button from "../../ui/Button/Button";
+
 function FullWidhtHeightImageBackground(props) {
+  const dispatch = useDispatch();
+
+  const bookAppointmentClickHandler = (e) => {
+    e.preventDefault();
+    dispatch(uiSliceActions.toggleModal());
+}
   
   let classes = ['justify-center' ,'flex'];
   classes = props.classes ? classes.concat(props.classes): classes;
@@ -24,7 +33,7 @@ function FullWidhtHeightImageBackground(props) {
         {props.subHeading || 'Placeholder'}
         </h1>
         <div className="mt-10 flex justify-center">
-          <Button variant="secondary" text="Book Appointment" />
+        <Button norouter={true} onClick={bookAppointmentClickHandler} variant="secondary" text='Book Appointment' />
         </div>
       </div>
     </section>

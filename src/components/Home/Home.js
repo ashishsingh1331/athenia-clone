@@ -9,16 +9,16 @@ import bridalImage from '../../images/bridal.jpg';
 import BookingForm from '../forms/BookingForm';
 import Booking from '../Booking/Booking';
 import Modal from '../../ui/Modal/Modal';
+
 function Home(props) {
    
     return (
         <div>
-            <VideoBgBanner classes={['bg-right']} bgimage={modelImage}/>
+            <VideoBgBanner classes={['bg-75']} bgimage={modelImage}/>
             <FullWidhtHeightImageBackground classes={['bg-center']}    id='eyelash' bgimage={eyelashImg} mainHeading='Eyelash Extenstion' subHeading='Best eyelash extension in Delhi' />
             <FullWidhtHeightImageBackground classes={['bg-center']}  id='nail' bgimage={nailImage} mainHeading='Nail Extenstion' subHeading='Best nail extension in Delhi' />
-            <FullWidhtHeightImageBackground classes={['bg-center']} id='bridal' bgimage={bridalImage} mainHeading='Bridal Extenstion' subHeading='End to end Bridal services in Delhi' />
+            <FullWidhtHeightImageBackground classes={['bg-72']} id='bridal' bgimage={bridalImage} mainHeading='Bridal Extenstion' subHeading='End to end Bridal services in Delhi' />
            <Booking/>
-           {/* <Modal/> */}
         </div>
     );
 }
